@@ -28,7 +28,13 @@ Convolutional encoder and Turbo Encoder folders are fully populated, tested and 
 ## How to use
 All source code are self contained in the folder "src" of each component. There are no external libraries required and all the necessary files are in the repository.
 
-The project is fully using standard VHDL-2008 and it's mandatory to synthesize and use these IpCores with VHDL2008 compliant tools.
+The project is using standard VHDL-2008 and it's mandatory to synthesize and use these IpCores with VHDL2008 compliant tools.
+
+Compilation lists are provided in src folder with correct compilation order.
+
+## Testbenches
+In each folder is also presented a complete testbench showing the expected interfacing with the modules and the obtained results. In order to get a full output reference a full MATLAB model is provided and the results are automatically generated and ready to be be used in the testbench.
+
 
 ## About LTE Convolutional Coder
 LTE Convolutional coder is used for channel coding, particularly in the Physical Broadcast Channel (PBCH) and Physical Downlink Control Channel (PDCCH). This code uses a constraint length of 7 and a coding rate of 1/3 (each input bit becomes 3 output bits), employing generator polynomials G0=133(o), G1=171(o), and G2=165(o).
