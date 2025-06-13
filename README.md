@@ -37,6 +37,12 @@ A peculiar feature is the tail-biting implementation: the state registers are in
 ![alt text](https://www.researchgate.net/publication/303760187/figure/fig5/AS:368777502969861@1464934816769/LTE-convolutional-code-9.png)
 [cit.https://www.researchgate.net/publication/303760187/figure/fig5/AS:368777502969861@1464934816769/LTE-convolutional-code-9.png ]
 
+This design is streaming based and, after the initialization, each valid input corresponds to a valid output achiveing
+
+Maximum Throughput of $Fclk [bit/s]$
+
+In the tested usecase on a Xilinx Spartan 7 500Mbps are easily achivable.
+
 ## About LTE Turbo Coder
 Turbo coding improves the previous Convolutional Code performances obtaining BER close to the theoretical Nyquist Limit. Turbo encoders are based on a convolutional shift register with feedback and interleaving on the third branch.
 
@@ -65,3 +71,7 @@ $ g_{0}=f_1+f_2$\
 $ g_{i+1}={g_i+2f_2}$
 
 Since $f1+f2<K$ and $g+2f_2<K$ the modulo operation becomes a subtration by $K$ when the operation is greater then $K$
+
+The interleaved design requires to buffer the entire input before starting the processing and a ping-pong buffer is exploited to achieve maximum throughput.
+Maximum theoretical throughput is $\frac{Nbits}{Nbits+6} * Fclk  [bit/sec]$
+So for the biggest 4GPP transpost block off ~6000bits at 500MHz a theoretical 499.8Mbsp is achieved.
