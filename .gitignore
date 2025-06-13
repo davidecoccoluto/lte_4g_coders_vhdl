@@ -1,0 +1,4 @@
+convolutional/encoder/vivado_prj
+convolutional/decoder/vivado_prj
+turbo/encoder/vivado_prj
+turbo/decoder/vivado_prj
