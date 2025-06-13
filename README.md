@@ -23,7 +23,12 @@ Main features:
         |-- src
         `-- tb
 ```
-Convolutional encoder and Turbo Encoder folders are fully populated, tested and 3GPP compliant. The "Decoder" folders are still WIP.
+Convolutional encoder and Turbo Encoder folders are fully populated, tested and 3GPP compliant. The "decoder" folders are still WIP.
+
+## How to use
+All source code are self contained in the folder "src" of each component. There are no external libraries required and all the necessary files are in the repository.
+
+The project is fully using standard VHDL-2008 and it's mandatory to synthesize and use these IpCores with VHDL2008 compliant tools.
 
 ## About LTE Convolutional Coder
 LTE Convolutional coder is used for channel coding, particularly in the Physical Broadcast Channel (PBCH) and Physical Downlink Control Channel (PDCCH). This code uses a constraint length of 7 and a coding rate of 1/3 (each input bit becomes 3 output bits), employing generator polynomials G0=133(o), G1=171(o), and G2=165(o).
@@ -54,12 +59,9 @@ $\pi_i = (f_1 \cdot i + f_2 \cdot i^2)mod K$
 Where K is the block_size (number of input bits to be encoded) and f1 and f2 are constant from a table depending on K.
 This operation is not easy synthesizable as is because of the square multiplication, the addition and the heavy modulo operation so an iterative solution has been used.
 
-$$
-\begin{align*}
-  & \pi_{0}=0\\
-  & \pi_{i+1}={\pi_i+g_i} \\
-  & g_{0}=f_1+f_2\\
-  & g_{i+1}={g_i+2f_2}\\
-\end{align*}
-$$
+$ \pi_{0}=0$\
+$ \pi_{i+1}={\pi_i+g_i} $\
+$ g_{0}=f_1+f_2$\
+$ g_{i+1}={g_i+2f_2}$
+
 Since $f1+f2<K$ and $g+2f_2<K$ the modulo operation becomes a subtration by $K$ when the operation is greater then $K$
